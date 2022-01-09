@@ -2,7 +2,6 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 import Nvidia
-import time
 
 class GpuWindow(QMainWindow):
     
@@ -29,7 +28,7 @@ class GpuWindow(QMainWindow):
                 self.skip.append([self.name[i],"0,000,000원",str(self.price[i])+"$"])
             i+=1
         self.rows = self.skip
-        headers = ['모델명', '시세', '출시가']
+        headers = ['모델명', '시세', '출시가','주소']
 
         centerGeometry = QDesktopWidget().availableGeometry().center()
         self.setFixedSize(400, 230)
@@ -107,6 +106,8 @@ class PriceUpdate(QThread):
                 self.mainWindow.tableWidget.item(i,1).setText(Nvidia.YsrpBest(self.gpuName[i] ,self.gpuPrice[i]*(1+0.1*self.gpuPriceLevel)))
             if self.gpuBool[i] == 5:
                 self.mainWindow.tableWidget.item(i,1).setText(Nvidia.YsrpBest(self.gpuName[i] ,(self.gpuPrice[i]*(1+0.1*self.gpuPriceLevel))/2))
+            print(Nvidia.url)
+            #self.mainWindow.tableWidget.item(i,3).setText(Nvidia.url)
             i+=1
 
 class MyWindow(QMainWindow):
@@ -131,7 +132,7 @@ class MyWindow(QMainWindow):
 
         button4 = QPushButton("GTX10", self)
         button4.move(350, 25)
-        button4.clicked.connect(self.button4Clicked)
+        button4.clicked.connect(self.button4Clicked) 
 
         button5 = QPushButton("GTX900", self)
         button5.move(450, 25)
@@ -166,9 +167,9 @@ if __name__ == "__main__":
     
     app = QApplication(sys.argv)
     
-    name30 = ['RTX3090S','RTX3090','RTX3080TI','RTX3080','RTX3070TI','RTX3070','RTX3060TI','RTX3060','RTX3050']
+    name30 = ['RTX3090TI','RTX3090','RTX3080TI','RTX3080','RTX3070TI','RTX3070','RTX3060TI','RTX3060','RTX3050']
     price30 = ["출시예정",1499,1199,699,599,499,399,329,"출시예정"]
-    bool30 = [10,0,0,0,0,0,0,0,10]
+    bool30 = [10,0,0,0,0,0,0,0,10] # 0 판매중 5 중고 10 출시예정
 
     name20 = ['TITAN_RTX','RTX 2080TI','RTX2080S','RTX2080','RTX2070S','RTX2070','RTX2060S','RTX2060']
     price20 = [2499,999,699,699,499,499,399,349]

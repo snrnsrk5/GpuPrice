@@ -8,6 +8,7 @@ won = Usd.Won('https://finance.naver.com/marketindex/')
 
 print("달러 :",won)
 
+url = ""
 urlA = 'https://search.shopping.naver.com/search/all?catId=50003104&frm=NVSHCAT&maxPrice='
 urlB = '&minPrice='
 urlC = '&origQuery='
@@ -20,11 +21,11 @@ def YsrpBest(gpu, msrp):
     if(gpu[-1] == 'S'):
         gpu = gpu + 'UPER'
 
-    print("그래픽카드명 :", gpu, "\n가격 :", msrp)
+    #print("그래픽카드명 :", gpu, "\n가격 :", msrp)
 
     url = (urlA+str((int(msrp)*won*2))+urlB+str((int(msrp)*won))+urlC+gpu+urlD+gpu+urlE)
 
-    print("URL :",url)
+    #print("URL :",url)
 
     req = requests.get(url)
     html = req.text
@@ -35,7 +36,7 @@ def YsrpBest(gpu, msrp):
         return "  Error  "
     else:
         tag = ser.string
-        print(tag)
-        print("최소",str(int(msrp)*won))
-        print("최대",str(int(msrp)*won*2))
+        #print(tag)
+        #print("최소",str(int(msrp)*won))
+        #print("최대",str(int(msrp)*won*2))
         return tag

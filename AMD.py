@@ -8,11 +8,11 @@ won = Usd.Won('https://finance.naver.com/marketindex/')
 
 print("달러 :",won)
 
-urlA = 'https://search.shopping.naver.com/search/all?catId=50003104&frm=NVSHCAT&maxPrice='
+urlA = 'https://search.shopping.naver.com/search/all?catId=50003103&frm=NVSHPRC&maxPrice='
 urlB = '&minPrice='
 urlC = '&origQuery='
 urlD = '&pagingIndex=1&pagingSize=40&productSet=total&query='
-urlE = '&sort=rel&timestamp=&viewType=list'
+urlE = '&sort=price_asc&timestamp=&viewType=list'
 
 def YsrpBest(gpu, msrp):
     time.sleep(0.5)
